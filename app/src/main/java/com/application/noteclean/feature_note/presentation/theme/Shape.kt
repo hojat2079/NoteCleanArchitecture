@@ -1,4 +1,4 @@
-package com.application.noteclean.ui.theme
+package com.application.noteclean.feature_note.presentation.theme
 
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Shapes

@@ -1,4 +1,4 @@
-package com.application.noteclean.ui.theme
+package com.application.noteclean.feature_note.presentation.theme
 
 import androidx.compose.material.Typography
 import androidx.compose.ui.text.TextStyle
