@@ -18,28 +18,16 @@ class GetAllNotes(
             when (noteOrder.orderType) {
                 OrderType.ASCENDING -> {
                     when (noteOrder) {
-                        is NoteOrder.Color -> {
-                            notes.sortedBy { it.color }
-                        }
-                        is NoteOrder.Date -> {
-                            notes.sortedBy { it.timesTamp }
-                        }
-                        is NoteOrder.Title -> {
-                            notes.sortedBy { it.title }
-                        }
+                        is NoteOrder.Color -> notes.sortedBy { it.color }
+                        is NoteOrder.Date -> notes.sortedBy { it.timesTamp }
+                        is NoteOrder.Title -> notes.sortedBy { it.title }
                     }
                 }
                 OrderType.DESCENDING -> {
                     when (noteOrder) {
-                        is NoteOrder.Color -> {
-                            notes.sortedByDescending { it.color }
-                        }
-                        is NoteOrder.Date -> {
-                            notes.sortedByDescending { it.timesTamp }
-                        }
-                        is NoteOrder.Title -> {
-                            notes.sortedByDescending { it.title }
-                        }
+                        is NoteOrder.Color -> notes.sortedByDescending { it.color }
+                        is NoteOrder.Date -> notes.sortedByDescending { it.timesTamp }
+                        is NoteOrder.Title -> notes.sortedByDescending { it.title }
                     }
                 }
             }

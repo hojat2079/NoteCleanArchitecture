@@ -1,5 +1,6 @@
 package com.application.noteclean.feature_note.presentation.list_note
 
+import android.util.Log
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
@@ -34,8 +35,31 @@ class NotesViewModel @Inject constructor(
     fun onEvent(event: NotesEvent) {
         when (event) {
             is NotesEvent.ChangeOrder -> {
+                Log.e("MainViewModel", "onEvent: ")
+                Log.e("MainViewModel", "event.noteOrder::class --> ${event.noteOrder::class}")
+                Log.e(
+                    "MainViewModel",
+                    "state.value.noteOrder::class --> ${state.value.noteOrder::class}"
+                )
+                Log.e(
+                    "MainViewModel",
+                    "event.noteOrder.orderType --> ${event.noteOrder.orderType.name}"
+                )
+                Log.e(
+                    "MainViewModel",
+                    "state.value.noteOrder.orderType --> ${state.value.noteOrder.orderType.name}"
+                )
+                Log.e(
+                    "MainViewModel",
+                    "event.noteOrder::class == state.value.noteOrder::class --> ${event.noteOrder::class == state.value.noteOrder::class}"
+                )
+                Log.e(
+                    "MainViewModel",
+                    "event.noteOrder.orderType == state.value.noteOrder.orderType --> ${event.noteOrder.orderType == state.value.noteOrder.orderType}"
+                )
+
                 if (event.noteOrder::class == state.value.noteOrder::class &&
-                    event.noteOrder.orderType == state.value.noteOrder.orderType
+                    event.noteOrder.orderType.name == state.value.noteOrder.orderType.name
                 ) {
                     return
                 }
@@ -63,11 +87,12 @@ class NotesViewModel @Inject constructor(
 
     private fun getAllNotes(noteOrder: NoteOrder) {
         getNoteJob?.cancel()
-        getNoteJob = noteUseCase.getAllNotes().onEach { notes ->
-            _state.value = state.value.copy(
-                notes = notes,
-                noteOrder = noteOrder
-            )
-        }.launchIn(viewModelScope)
+        getNoteJob = noteUseCase.getAllNotes(noteOrder)
+            .onEach { notes ->
+                _state.value = state.value.copy(
+                    notes = notes,
+                    noteOrder = noteOrder
+                )
+            }.launchIn(viewModelScope)
     }
 }
