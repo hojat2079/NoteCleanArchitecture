@@ -2,7 +2,7 @@ package com.application.noteclean.feature_note.domain.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.application.noteclean.feature_note.presentation.theme.*
+import com.application.noteclean.feature_note.presentation.util.theme.*
 
 
 @Entity

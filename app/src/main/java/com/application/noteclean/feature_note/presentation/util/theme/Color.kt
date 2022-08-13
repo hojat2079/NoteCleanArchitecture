@@ -1,4 +1,4 @@
-package com.application.noteclean.feature_note.presentation.theme
+package com.application.noteclean.feature_note.presentation.util.theme
 
 import androidx.compose.ui.graphics.Color
 

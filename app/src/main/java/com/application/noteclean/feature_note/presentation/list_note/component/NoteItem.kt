@@ -94,24 +94,10 @@ fun NoteItem(
             onClick = onDeleteClick
         ) {
             Icon(
-                imageVector =Icons.Default.Delete,
-                contentDescription = "Delete button"
+                imageVector = Icons.Default.Delete,
+                contentDescription = "Delete button",
+                tint = MaterialTheme.colors.onSurface
             )
         }
     }
-}
-
-@Preview(showBackground = false)
-@Composable
-fun DefaultPreview() {
-    NoteItem(
-        note = Note(
-            1,
-            "title",
-            "content",
-            timesTamp = "time",
-            0xffab91,
-        ),
-        onDeleteClick = {}
-    )
 }

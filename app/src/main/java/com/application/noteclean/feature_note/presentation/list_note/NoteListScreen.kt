@@ -15,14 +15,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.navigation.NavController
 import com.application.noteclean.feature_note.presentation.list_note.component.NoteItem
 import com.application.noteclean.feature_note.presentation.list_note.component.OrderSection
 import kotlinx.coroutines.launch
 
 @Composable
 fun NoteListScreen(
-    navController: NavController,
+    navigateToAddEditNoteScreen: (Int, Int) -> Unit,
     notesViewModel: NotesViewModel = hiltViewModel()
 ) {
     val state = notesViewModel.state.value
@@ -32,7 +31,9 @@ fun NoteListScreen(
     Scaffold(
         floatingActionButton = {
             FloatingActionButton(
-                onClick = {},
+                onClick = {
+                    navigateToAddEditNoteScreen(-1, -1)
+                },
                 backgroundColor = MaterialTheme.colors.primary
             ) {
                 Icon(
@@ -79,9 +80,7 @@ fun NoteListScreen(
                         notesViewModel.onEvent(NotesEvent.ChangeOrder(it))
                     },
                     modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(16.dp),
-
+                        .fillMaxWidth(),
                     noteOrder = state.noteOrder,
                 )
             }
@@ -99,7 +98,7 @@ fun NoteListScreen(
                         modifier = Modifier
                             .fillMaxWidth()
                             .clickable {
-
+                                navigateToAddEditNoteScreen(note.id!!, note.color)
                             },
                         onDeleteClick = {
                             notesViewModel.onEvent(NotesEvent.DeleteNote(note))

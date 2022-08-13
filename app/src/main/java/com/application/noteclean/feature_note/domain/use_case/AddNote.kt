@@ -14,6 +14,6 @@ class AddNote(
         if (note.content.isBlank()) {
             throw InvalidNoteException(message = "the content of the note can't be empty.")
         }
-        return noteRepository.deleteNote(note)
+        return noteRepository.insertNote(note)
     }
 }
