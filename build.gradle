@@ -13,7 +13,11 @@ plugins {
     id 'org.jetbrains.kotlin.android' version '1.5.31' apply false
     id "org.sonarqube" version "3.4.0.2513"
 }
-
+sonarqube {
+  properties {
+    property "sonar.projectKey", "hojat2079_NoteCleanArchitecture_AYUBriVTruRP0nzvqFUb"
+  }
+}
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
