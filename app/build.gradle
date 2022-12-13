@@ -95,6 +95,10 @@ dependencies {
 
 }
 
+plugins {
+  id "org.sonarqube" version "3.4.0.2513"
+}
+
 sonarqube {
   properties {
     property "sonar.projectKey", "hojat2079_NoteCleanArchitecture_AYUBriVTruRP0nzvqFUb"
