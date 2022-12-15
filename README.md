@@ -1,6 +1,6 @@
 # NoteCleanArchitecture
 
-This is a simple Note application implemented with mvvm architecture.
+This is a simple Note application implemented with Kotlin and mvvm architecture.
 
 In this application, the following library and concepts have been used:
 
